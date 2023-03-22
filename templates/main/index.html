@@ -1,5 +1,33 @@
+{% load static %}
 {% include "base.html" %}
 
 {% block bodyblock %}
-    <h1>Hello World!</h1>
+    <div align="center">
+        <h1 class="m-5">Hello World!</h1>
+        <label for="room-list">Select Room Type</label><br>
+        <select name="room-list" id="room-list">
+            <option value="public">Public</option>
+            <option value="private">Private</option>
+            <option value="beta">Beta</option>
+        </select>
+        {% comment %} {% if request.user.is_admin %} {% endcomment %}
+        <button class="btn btn-danger" id="close-btn" style="display: none;">Close</button>
+        {% comment %} {% endif %} {% endcomment %}
+        
+        <h2>Messages</h2>
+        <div id="scrollable-message" style="height:300px; width= 100px; overflow: scroll; list-style-type: none;">
+            <ol id="messages">
+            </ol>
+        </div>
+
+        <form id="txt-form" class="m-5">
+            {% csrf_token %}
+            <small>Only first 50 characters will be taken as input</small><br>
+            <input class="form-control" style="width: 300px;" type="text" name="message" id="mess" placeholder="Enter a sentence" autofocus>
+            <br>
+            <input class="btn btn-primary" type="submit" value="Send">
+        </form>
+    </div>
+
+    <script src={% static 'index.js' %}></script>
 {% endblock bodyblock %}
