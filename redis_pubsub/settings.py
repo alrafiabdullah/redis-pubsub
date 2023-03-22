@@ -27,9 +27,9 @@ TEMPLATE_DIR = BASE_DIR / 'templates'
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if os.getenv("DJANGO_DEBUG") == "True" else False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [os.getenv('DJANGO_ALLOWED_HOST')]
 
 
 # Application definition
