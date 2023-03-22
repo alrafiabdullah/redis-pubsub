@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let selectedRoom = selectOption.value;
 
-    let socket = new WebSocket(`ws://192.168.0.163:8000/redis/pubsub/${selectedRoom}`);
+    let socket = new WebSocket(`wss://redis.abdullahalrafi.trade/redis/pubsub/${selectedRoom}`);
 
     selectOption.addEventListener('change', (e) => {
         selectedRoom = e.target.value;
         socket.close();
-        socket = new WebSocket(`ws://192.168.0.163:8000/redis/pubsub/${selectedRoom}`);
+        socket = new WebSocket(`wss://redis.abdullahalrafi.trade/redis/pubsub/${selectedRoom}`);
 
         ulMsg.innerHTML = "";
 
